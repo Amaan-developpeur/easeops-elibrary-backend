@@ -1,0 +1,5 @@
+.env
+easeops.db
+logs/
+__pycache__/
+venv/
