@@ -16,11 +16,6 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 from app.core.response import error_response
 from app.core.logger import logger
 
-
-
-
-
-
 app = FastAPI(title="EaseOps E-Library API")
 
 @app.get("/health")
@@ -28,8 +23,6 @@ def health():
     return {"status": "ok"}
 
 # ---------------------------------
-# Temporary
-
 from app.database import engine, Base
 
 @app.on_event("startup")
@@ -48,7 +41,6 @@ async def global_exception_handler(request: Request, exc: Exception):
         status_code=500,
         content=error_response("Internal server error")
     )
-
 
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
